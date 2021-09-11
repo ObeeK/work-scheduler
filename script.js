@@ -27,7 +27,30 @@ for(var i = 0; i < hourBlocks.length; i++) {
 }
 
 // Add save functionality  -- check WebAPIS local storage activities -- click event listener on save buttons
+$(".saveBtn").on("click", function() {
+    
+   var textInput = $(this).siblings(".textblock").children("textarea").val();
+   var hourNow = parseInt($(this).siblings(".textblock").attr("hour"));
+
+   localStorage.setItem(hourNow, textInput)
+})
+
 // using textareas array
 
 // Add persistence
+
+var savedText = function () {
+    // var value = localStorage.getItem(10);
+    // $("textarea[hour='10']").val(value);
+
+    var hourArr = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+
+    hourArr.forEach(function(e) {
+        $(`textarea[hour='${e}']`).val(localStorage.getItem(e));
+ 
+    })
+}
+
+
+savedText()
 // using textareas array
